@@ -45,7 +45,7 @@ namespace HW_L05
                 {
                     
                     Monitor.Wait(lockObject);
-                    Console.WriteLine($"Осталось потоков: {count_threads}");
+                    Console.WriteLine($"Осталось потоков: {count_threads}\t Затраченное время: {swatch}");
                 }
             
             Console.WriteLine($"Общее время выполнения: {swatch}");
@@ -64,7 +64,11 @@ namespace HW_L05
                 var startTime = Stopwatch.StartNew();
 
                 //считаем факториал
-                Console.WriteLine($"Факториал {(ulong)f} = {factorial((ulong)f)}");
+                var result_F = factorial((ulong)f);
+                if(result_F.ToString().Length > 100)
+                    Console.WriteLine($"Факториал {(ulong)f} = число более 100 символов..");
+                else
+                    Console.WriteLine($"Факториал {(ulong)f} = {result_F}");
 
                 startTime.Stop();
                 swatch += startTime.Elapsed;
